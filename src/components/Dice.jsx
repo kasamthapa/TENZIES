@@ -1,17 +1,13 @@
-// import { useState } from "react";
+import React from "react";
 
-function Dice(props) {
-  const style = {
-    backgroundColor: props.isInvalid
-      ? "red"
-      : props.isHeld
-      ? "#59e391"
-      : "#fff",
-  };
-
+function Dice({ id, value, isHeld, isInvalid, hold }) {
   return (
-    <button onClick={() => props.hold(props.id)} style={style} className="dice">
-      {props.value}
+    <button
+      onClick={() => hold(id)}
+      className={`dice ${isHeld ? "held" : ""} ${isInvalid ? "invalid" : ""}`}
+      aria-label={`Die with value ${value}, ${isHeld ? "held" : "not held"}`}
+    >
+      {value}
     </button>
   );
 }
